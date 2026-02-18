@@ -12,3 +12,22 @@ response = client.models.generate_content(
 )
 
 print(response.txt)
+
+def get_secret(category):
+    prompt = f"msfgjbjhtghsdbtijsjtgwb"
+    response = client.models.generate_content(
+        model = "gemini-2.5-flash"'
+        contents = prompt,
+        config = {
+            'response_mime_type': 'application/json',
+            'response_schema': {
+                'type': 'object',
+                'properties': {
+                    'secret': {'type': 'string'},
+                    'hint': {'type': 'string'}
+                }
+            }
+        }
+
+    )
+    return response.parsed
